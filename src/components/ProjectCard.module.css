@@ -1,55 +1,83 @@
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-3);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
-  overflow: hidden;
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  box-shadow: var(--shadow-card);
   transition:
-    transform var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast);
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--color-border-strong);
 }
 
-.thumb {
-  aspect-ratio: 16 / 10;
-  display: grid;
-  place-items: center;
-  background: var(--color-surface-2);
-  font-size: var(--text-sm);
-}
-
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.card:focus-within {
+  border-color: var(--color-accent);
 }
 
 .body {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: var(--space-2);
-  padding: var(--space-5);
+  padding: 0 var(--space-3) var(--space-3);
 }
 
-.head {
+.meta {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: var(--space-2);
 }
 
-.head h3 {
+.badge {
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--text-lg);
 }
 
+.title svg {
+  flex-shrink: 0;
+  color: var(--color-muted);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    color var(--dur-fast);
+}
+
+.card:hover .title svg {
+  transform: translateX(3px);
+  color: var(--color-accent);
+}
+
+/* Stretch the title link over the whole card so the card is clickable. */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
 .tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-top: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-2);
 }

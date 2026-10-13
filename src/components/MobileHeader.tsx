@@ -12,7 +12,7 @@ export default function MobileHeader() {
         <strong>{profile.name}</strong>
         <span>{profile.role}</span>
       </div>
-      <StatusDot available={profile.available} text="" />
+      <StatusDot available={profile.available} text={profile.availabilityText} />
     </header>
   );
 }

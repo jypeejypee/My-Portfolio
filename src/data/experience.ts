@@ -1,12 +1,12 @@
-import type { Experience } from "@/types";
+import type { Education } from "@/types";
 
-// PLACEHOLDER — jobs, internships, freelance, or school projects.
-export const experience: Experience[] = [
+// Add work experience here later (internships, freelance, jobs) — only real entries.
+export const education: Education[] = [
   {
-    role: "PLACEHOLDER Role",
-    org: "PLACEHOLDER Company / School",
-    start: "2025",
+    program: "Java Programming and Software Development",
+    school: "CIICC",
+    start: "2026",
     end: "Present",
-    points: ["PLACEHOLDER — what you did", "PLACEHOLDER — a result you're proud of"],
+    points: [],
   },
 ];

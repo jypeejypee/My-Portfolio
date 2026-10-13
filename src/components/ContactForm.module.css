@@ -2,7 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  max-width: 560px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
 }
 
 .form label {
@@ -10,30 +15,42 @@
   flex-direction: column;
   gap: var(--space-2);
   font-size: var(--text-sm);
+  font-weight: 500;
   color: var(--color-muted);
+}
+
+.optional {
+  color: var(--color-subtle);
+  font-weight: 400;
 }
 
 .form input,
 .form textarea {
   font: inherit;
+  font-size: var(--text-base);
   color: var(--color-text);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   padding: var(--space-3) var(--space-4);
+  resize: vertical;
+  transition:
+    border-color var(--dur-fast),
+    box-shadow var(--dur-fast);
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--color-subtle);
 }
 
 .form input:focus,
 .form textarea:focus {
   outline: none;
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
 
 .form button {
   align-self: flex-start;
-}
-
-.hp {
-  position: absolute;
-  left: -9999px;
 }

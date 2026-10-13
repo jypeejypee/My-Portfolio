@@ -6,7 +6,13 @@ import { navItems } from "@/lib/nav";
 import Icon from "./Icon";
 
 // Shared by ProfileRail (variant="rail") and MobileTabBar (variant="tabs").
-export default function NavLinks({ className, activeClass }: { className: string; activeClass: string }) {
+export default function NavLinks({
+  className,
+  activeClass,
+}: {
+  className: string;
+  activeClass: string;
+}) {
   const pathname = usePathname();
   return (
     <>

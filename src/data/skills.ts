@@ -1,11 +1,24 @@
 import type { SkillGroup } from "@/types";
 
-// PLACEHOLDER — adjust to what you actually know.
 export const skills: SkillGroup[] = [
-  { area: "Frontend", items: ["React", "Next.js", "TypeScript", "HTML", "CSS"] },
-  { area: "Backend", items: ["Node.js", "Express", "Java", "Spring Boot", "REST APIs"] },
-  { area: "Database", items: ["PostgreSQL", "MySQL", "MongoDB"] },
-  { area: "Tools", items: ["Git", "GitHub", "VS Code", "Vercel", "Docker"] },
+  { area: "Languages", items: ["JavaScript (ES6+)", "Java", "SQL", "HTML5", "CSS3", "TypeScript"] },
+  { area: "Front end", items: ["React", "Next.js", "Vite", "Tailwind CSS", "Responsive design"] },
+  { area: "Back end", items: ["Node.js", "Express", "REST APIs", "WebSockets"] },
+  { area: "Data & APIs", items: ["PostgreSQL", "JDBC", "Google Drive API", "OAuth 2.0"] },
+  { area: "Tools", items: ["Git", "GitHub", "VS Code", "npm", "Vercel", "GitHub Pages"] },
 ];
 
-export const learningNow = "PLACEHOLDER — what you're learning right now (e.g. Three.js, GSAP)";
+// Short list shown on the home page.
+export const coreStack = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Express",
+  "Java",
+  "PostgreSQL",
+  "WebSockets",
+];
+
+export const learningNow =
+  "Going deeper on Java and databases: JDBC, PostgreSQL schema design and Spring Boot.";

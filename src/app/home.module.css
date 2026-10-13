@@ -1,24 +1,112 @@
+.hero {
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-10);
+}
+
 .headline {
   font-size: var(--text-4xl);
-  max-width: 18ch;
+  max-width: 22ch;
 }
 
-.label {
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.lead {
   color: var(--color-muted);
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+  font-size: var(--text-lg);
+  max-width: 52ch;
 }
 
 .actions {
+  margin-top: var(--space-2);
+}
+
+.big {
+  font-size: var(--text-lg);
+  line-height: 1.45;
+}
+
+.cardTitle {
+  font-size: var(--text-xl);
+}
+
+.stackText {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
   margin-top: auto;
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.more svg {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.more:hover svg {
+  transform: translateX(3px);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted);
+  transition: color var(--dur-fast);
+}
+
+.list li:last-child .listItem {
+  border-bottom: 0;
+}
+
+.listItem strong {
+  display: block;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.listMeta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.listItem:hover {
+  color: var(--color-accent);
+}
+
+.edu {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.eduIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    padding: var(--space-6);
+  }
 }

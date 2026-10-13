@@ -6,28 +6,33 @@ export type Social = {
 
 export type Profile = {
   name: string;
+  firstName: string;
   handle: string;
   role: string;
   headline: string;
   bio: string;
+  summary: string;
   location: string;
+  timezone: string;
   email: string;
   avatarSrc: string;
   resumeHref: string;
   available: boolean;
   availabilityText: string;
+  lookingFor: string;
   socials: Social[];
 };
-
-export type Tech = "React" | "Next.js" | "Node.js" | "Java" | "TypeScript" | "Spring Boot" | "SQL" | "Other";
 
 export type Project = {
   slug: string;
   title: string;
   summary: string;
   description: string;
-  tech: Tech[];
+  highlights: string[];
+  tech: string[];
+  category: "Game" | "Web app" | "Tool" | "Website" | "Backend";
   year: number;
+  status?: "In progress";
   image?: string;
   liveUrl?: string;
   repoUrl?: string;
@@ -39,9 +44,9 @@ export type SkillGroup = {
   items: string[];
 };
 
-export type Experience = {
-  role: string;
-  org: string;
+export type Education = {
+  program: string;
+  school: string;
   start: string;
   end: string;
   points: string[];

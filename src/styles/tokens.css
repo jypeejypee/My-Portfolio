@@ -1,28 +1,37 @@
 /* Design tokens — the ONLY place raw colors/sizes should live. */
-/* PLACEHOLDER palette: change these to make it yours. */
 :root {
   /* Colors */
-  --color-bg: #0b0d12;
-  --color-surface: #12161f;
-  --color-surface-2: #181d29;
-  --color-border: #232a38;
-  --color-border-strong: #343e52;
-  --color-text: #eef1f6;
-  --color-muted: #8b93a7;
-  --color-accent: #7c9cff;
-  --color-accent-contrast: #0b0d12;
-  --color-success: #3ddc97;
+  --color-bg: #0a0b0e;
+  --color-surface: #111317;
+  --color-surface-2: #171a20;
+  --color-border: #1f232b;
+  --color-border-strong: #2d333d;
+  --color-text: #ededf0;
+  --color-muted: #9399a6;
+  --color-subtle: #6b7180;
+  --color-accent: #6ee7b7;
+  --color-accent-soft: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  --color-accent-contrast: #05140e;
+  --color-success: #6ee7b7;
+  --color-grid: rgba(255, 255, 255, 0.035);
+
+  /* Print (resume) */
+  --print-text: #111111;
+  --print-muted: #444444;
+  --print-bg: #ffffff;
+  --print-rule: #cccccc;
 
   /* Typography */
   --font-sans: var(--font-main, system-ui), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-code, ui-monospace), ui-monospace, "Cascadia Code", Consolas, monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.375rem;
   --text-2xl: 1.75rem;
-  --text-3xl: 2.25rem;
-  --text-4xl: clamp(2.25rem, 4vw, 3.5rem);
+  --text-3xl: clamp(1.875rem, 3vw, 2.5rem);
+  --text-4xl: clamp(2rem, 3.6vw, 3.125rem);
 
   /* Spacing (4px scale) */
   --space-1: 0.25rem;
@@ -34,17 +43,23 @@
   --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
+  --space-16: 4rem;
 
   /* Radius */
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
   --radius-full: 999px;
 
   /* Layout */
   --rail-width: 300px;
   --tabbar-height: 68px;
-  --content-max: 1200px;
+  --content-max: 1080px;
+  --prose-max: 68ch;
+  --grid-size: 48px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 12px 32px -16px rgba(0, 0, 0, 0.6);
 
   /* Motion */
   --dur-fast: 150ms;

@@ -1,52 +1,96 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { profile } from "@/data/profile";
-import { skills } from "@/data/skills";
-import { experience } from "@/data/experience";
+import { skills, learningNow } from "@/data/skills";
+import { education } from "@/data/experience";
+import Icon from "@/components/Icon";
 import styles from "./about.module.css";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About",
+  description: `About ${profile.name}, ${profile.role}: skills, education and what I'm looking for.`,
+};
 
 export default function AboutPage() {
   return (
     <>
-      <h1 className="page-title">About</h1>
-      <p className="page-intro">{profile.bio}</p>
+      <header className="page-head">
+        <span className="eyebrow">About</span>
+        <h1 className="page-title">Hi, I&apos;m {profile.firstName}.</h1>
+        <p className="page-intro">{profile.summary}</p>
+      </header>
 
-      <section className={styles.section}>
-        <h2>Skills</h2>
+      <div className={styles.facts}>
+        <div className={styles.fact}>
+          <span className="eyebrow">Role</span>
+          <p>{profile.role}</p>
+        </div>
+        <div className={styles.fact}>
+          <span className="eyebrow">Location</span>
+          <p>
+            {profile.location} · {profile.timezone}
+          </p>
+        </div>
+        <div className={styles.fact}>
+          <span className="eyebrow">Looking for</span>
+          <p>{profile.lookingFor}</p>
+        </div>
+      </div>
+
+      <section className={styles.section} aria-labelledby="skills">
+        <h2 id="skills">Skills</h2>
         <div className={styles.skills}>
           {skills.map((g) => (
             <div key={g.area} className={styles.group}>
               <h3>{g.area}</h3>
-              <div className={styles.chips}>
+              <ul className="chips">
                 {g.items.map((s) => (
-                  <span key={s} className="chip">
+                  <li key={s} className="chip">
                     {s}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
+        <p className={styles.learning}>
+          <Icon name="sparkle" size={16} /> <span>{learningNow}</span>
+        </p>
       </section>
 
-      <section className={styles.section}>
-        <h2>Experience</h2>
+      <section className={styles.section} aria-labelledby="education">
+        <h2 id="education">Education</h2>
         <ol className={styles.timeline}>
-          {experience.map((e) => (
-            <li key={`${e.org}-${e.role}`} className={styles.item}>
-              <strong>{e.role}</strong> · <span className="muted">{e.org}</span>
-              <div className="muted" style={{ fontSize: "var(--text-sm)" }}>
+          {education.map((e) => (
+            <li key={`${e.school}-${e.program}`} className={styles.item}>
+              <span className="eyebrow">
                 {e.start} – {e.end}
-              </div>
-              <ul>
-                {e.points.map((p) => (
-                  <li key={p}>{p}</li>
-                ))}
-              </ul>
+              </span>
+              <h3>{e.program}</h3>
+              <p className="muted">{e.school}</p>
+              {e.points.length > 0 && (
+                <ul>
+                  {e.points.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ol>
+      </section>
+
+      <section className={`${styles.section} ${styles.cta}`}>
+        <h2>Want the short version?</h2>
+        <p className="muted">My resume has everything on one page.</p>
+        <div className="btn-row">
+          <Link href={profile.resumeHref} className="btn btn-primary">
+            <Icon name="file" /> View resume
+          </Link>
+          <Link href="/contact" className="btn">
+            Contact me
+          </Link>
+        </div>
       </section>
     </>
   );

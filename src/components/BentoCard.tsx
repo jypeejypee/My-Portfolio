@@ -15,9 +15,9 @@ export default function BentoCard({
   children: React.ReactNode;
 }) {
   return (
-    <section className={`${styles.card} ${styles[span]} ${tall ? styles.tall : ""} ${className}`}>
+    <div className={`${styles.card} ${styles[span]} ${tall ? styles.tall : ""} ${className}`}>
       {children}
-    </section>
+    </div>
   );
 }
 
