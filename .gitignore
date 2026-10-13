@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.env
+.DS_Store
+npm-debug.log*
+
+# Local notes (not published)
+AGENTS.md
+CLAUDE.md
+docs/
+.github/copilot-instructions.md
+.vscode/
+.claude/
