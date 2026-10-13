@@ -12,8 +12,8 @@ import styles from "./home.module.css";
 
 export default function HomePage() {
   const [main, second, third] = flagshipProjects;
-  const engineeringJobs = experience.filter((j) => j.role && j.org !== "Self-directed").slice(0, 3);
-  const liveApps = flagshipProjects.filter((p) => p.liveUrl);
+  const recentJobs = experience.filter((j) => j.org !== "Self-directed").slice(0, 3);
+  const demos = flagshipProjects.filter((p) => p.liveUrl || p.video);
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function HomePage() {
           rows={2}
           icon="folder"
           title="Projects"
-          description="Three live apps: an accounting system, an AI-assisted support tool and a game that teaches Java."
+          description="Three shipped apps: an accounting system, an AI-assisted support tool and a game that teaches Java."
           href="/projects"
           className={styles.projectsTile}
         >
@@ -83,7 +83,7 @@ export default function HomePage() {
           span={5}
           icon="user"
           title="About"
-          description="From mechanical engineering to full-stack development."
+          description="A developer who ships, with a support and engineering background."
           href="/about"
         >
           <div className={styles.about}>
@@ -95,20 +95,20 @@ export default function HomePage() {
               className={styles.aboutPhoto}
             />
             <p className={styles.aboutText}>
-              BS Mechanical Engineering, PUP. 7+ years solving problems in plants, buildings and a
-              hospital. Now I solve them in code.
+              I support TikTok creators at Concentrix and build software for the problems I see.
+              Engineering graduate, PUP.
             </p>
           </div>
         </BentoCard>
 
         <BentoCard span={5} icon="briefcase" title="Experience" href="/about#experience">
-          <p className={styles.bigStat}>
-            7+ <span>years in engineering roles</span>
-          </p>
           <ul className={styles.jobs}>
-            {engineeringJobs.map((j) => (
+            {recentJobs.map((j) => (
               <li key={j.org}>
-                <strong>{j.role}</strong>
+                <strong>
+                  {j.role}
+                  {j.end === "Present" && <span className={styles.now}>Now</span>}
+                </strong>
                 <span>{j.org}</span>
               </li>
             ))}
@@ -118,17 +118,25 @@ export default function HomePage() {
         <BentoCard
           span={4}
           icon="rocket"
-          title="Live apps"
-          description="Open them and click around."
+          title="Try them"
+          description="Live demos, plus a video walkthrough."
         >
           <ul className={styles.live}>
-            {liveApps.map((p) => (
+            {demos.map((p) => (
               <li key={p.slug}>
-                <a href={p.liveUrl} target="_blank" rel="noreferrer" className={styles.liveLink}>
-                  <span className={styles.liveDot} aria-hidden="true" />
-                  {p.title}
-                  <Icon name="arrow" size={14} weight="bold" />
-                </a>
+                {p.liveUrl ? (
+                  <a href={p.liveUrl} target="_blank" rel="noreferrer" className={styles.liveLink}>
+                    <span className={styles.liveDot} aria-hidden="true" />
+                    {p.title}
+                    <Icon name="arrow" size={14} weight="bold" />
+                  </a>
+                ) : (
+                  <Link href={`/projects/${p.slug}#demo`} className={styles.liveLink}>
+                    <Icon name="play" size={14} weight="fill" />
+                    {p.title}
+                    <span className={styles.liveTag}>Video</span>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

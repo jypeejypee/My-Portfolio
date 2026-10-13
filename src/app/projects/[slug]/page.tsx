@@ -4,6 +4,7 @@ import Link from "next/link";
 import { projects } from "@/data/projects";
 import Icon from "@/components/Icon";
 import ProjectCover from "@/components/ProjectCover";
+import ProjectVideo from "@/components/ProjectVideo";
 import styles from "../projects.module.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -28,7 +29,9 @@ export default async function ProjectPage({ params }: Props) {
   if (index === -1) notFound();
   const project = projects[index];
   const next = projects[(index + 1) % projects.length];
-  const [cover, ...gallery] = project.images;
+  // With a demo video, the video leads and every screenshot goes in the gallery.
+  const [cover, ...rest] = project.images;
+  const gallery = project.video ? project.images : rest;
 
   return (
     <article>
@@ -57,13 +60,14 @@ export default async function ProjectPage({ params }: Props) {
         </div>
         {project.liveNote && (
           <p className={styles.note}>
-            <Icon name={project.liveNote.startsWith("Password") ? "lock" : "sparkle"} size={16} />
+            <Icon name={project.liveNote.startsWith("Private") ? "lock" : "sparkle"} size={16} />
             {project.liveNote}
           </p>
         )}
       </header>
 
-      {cover && (
+      {project.video && <ProjectVideo video={project.video} title={project.title} id="demo" />}
+      {cover && !project.video && (
         <ProjectCover
           image={cover}
           url={project.hideUrl ? undefined : project.liveUrl}

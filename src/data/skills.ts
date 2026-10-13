@@ -8,7 +8,10 @@ export const skills: SkillGroup[] = [
     area: "Data & APIs",
     items: ["PostgreSQL", "JDBC", "Supabase Auth", "Claude API", "Google Drive API", "OAuth 2.0"],
   },
-  { area: "Tools", items: ["Git", "GitHub", "VS Code", "npm", "Vercel", "AI coding tools"] },
+  {
+    area: "Tools",
+    items: ["Git", "GitHub", "VS Code", "npm", "Vercel", "AI-assisted development (Claude Code)"],
+  },
 ];
 
 // Logos in public/icons, shown in the scrolling "tools" strip.

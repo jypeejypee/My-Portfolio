@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Project } from "@/types";
 import Icon from "./Icon";
 import ProjectCover from "./ProjectCover";
+import ProjectVideo from "./ProjectVideo";
 import styles from "./ProjectCard.module.css";
 
 // Big showcase card for a flagship project: text on one side, framed screenshot on the other.
@@ -44,6 +45,11 @@ export function FlagshipCard({
               Live demo <Icon name="arrow" weight="bold" />
             </a>
           )}
+          {!project.liveUrl && project.video && (
+            <Link href={`/projects/${project.slug}#demo`} className="btn btn-accent">
+              <Icon name="play" weight="fill" /> Watch demo
+            </Link>
+          )}
           <Link href={`/projects/${project.slug}`} className="btn">
             Case study
           </Link>
@@ -55,24 +61,30 @@ export function FlagshipCard({
         </div>
         {project.liveNote && (
           <p className={styles.note}>
-            <Icon name={project.liveNote.startsWith("Password") ? "lock" : "sparkle"} size={14} />
+            <Icon name={project.liveNote.startsWith("Private") ? "lock" : "sparkle"} size={14} />
             {project.liveNote}
           </p>
         )}
       </div>
-      {image && (
-        <Link
-          href={`/projects/${project.slug}`}
-          className={styles.media}
-          tabIndex={-1}
-          aria-hidden="true"
-        >
-          <ProjectCover
-            image={image}
-            url={project.hideUrl ? undefined : project.liveUrl}
-            priority={priority}
-          />
-        </Link>
+      {project.video ? (
+        <div className={styles.media}>
+          <ProjectVideo video={project.video} title={project.title} />
+        </div>
+      ) : (
+        image && (
+          <Link
+            href={`/projects/${project.slug}`}
+            className={styles.media}
+            tabIndex={-1}
+            aria-hidden="true"
+          >
+            <ProjectCover
+              image={image}
+              url={project.hideUrl ? undefined : project.liveUrl}
+              priority={priority}
+            />
+          </Link>
+        )
       )}
     </article>
   );

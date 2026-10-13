@@ -45,13 +45,13 @@ export const projects: Project[] = [
     summary:
       "A support-agent tool that walks TikTok Shop creators through the app on an interactive phone, with an assistant that answers from the team's help articles.",
     description:
-      "A tool for support agents who help TikTok Shop creators. It puts the creator's app on screen as an interactive phone, shows the exact tap-by-tap route to read out, and answers questions only from the team's own Academy articles and SOPs. It never browses or guesses.",
+      "I work in TikTok creator support at Concentrix, and I built this around the questions creators ask most. It puts the creator's app on screen as an interactive phone, shows the exact tap-by-tap route to read out, and answers questions only from the team's own Academy articles and SOPs. It never browses or guesses.",
     highlights: [
       "Interactive phone that recreates the creator-side screens, with a numbered route agents can read out or copy.",
       "Academy assistant: full-text search over saved articles with MiniSearch, and optional short answers written by the Claude API from those articles only.",
       "“Show on phone” jumps from an answer straight to the matching screen.",
       "Ctrl+K screen search, light and dark themes, and a layout that fits on one screen with no scrolling.",
-      "Password-protected deployment. The API key stays on the server and never reaches the browser.",
+      "Private, password-protected deployment. The API key stays on the server and never reaches the browser.",
     ],
     tech: ["Next.js", "TypeScript", "Claude API", "MiniSearch", "Vercel"],
     year: 2026,
@@ -76,8 +76,12 @@ export const projects: Project[] = [
         height: 1350,
       },
     ],
-    liveUrl: "https://creator-support-navigator.vercel.app/",
-    liveNote: "Password-protected. Email me for a demo login.",
+    video: {
+      src: "/projects/navigator-demo.webm",
+      poster: "/projects/navigator-assistant.jpg",
+      caption: "2-minute walkthrough: screen search, the phone route and the AI assistant",
+    },
+    liveNote: "Private tool. Watch the 2-minute demo.",
   },
   {
     slug: "rune-of-logic",
@@ -173,12 +177,14 @@ export const projects: Project[] = [
     highlights: [
       "Balance, cash in/out, send money and transaction history.",
       "PostgreSQL schema that enforces non-negative balances and unique accounts at the database level.",
+      "Next step: a full e-wallet app, in the style of GCash, built on this back end.",
     ],
     tech: ["Java", "JDBC", "PostgreSQL"],
     year: 2026,
     status: "In progress",
     images: [],
-    repoUrl: "https://github.com/jypeejypee/bankcashapp-rebuild",
+    // PLACEHOLDER: add repoUrl back once the repo is public:
+    // repoUrl: "https://github.com/jypeejypee/bankcashapp-rebuild",
   },
 ];
 

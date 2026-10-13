@@ -70,8 +70,9 @@ export default function ResumePage() {
                 {p.title}
                 <span className={styles.tech}> | {p.tech.join(", ")}</span>
               </h3>
-              {(p.liveUrl || p.repoUrl) && (
+              {(p.liveUrl || p.repoUrl || p.video) && (
                 <p className={styles.links}>
+                  {!p.liveUrl && p.video && <span>Demo video on my portfolio (private tool)</span>}
                   {p.liveUrl && (
                     <a href={p.liveUrl}>
                       {p.hideUrl

@@ -1,6 +1,18 @@
 import type { Certification, Education, Job } from "@/types";
 
+// Keep every line here true and modest. Software roles first, then earlier work.
 export const experience: Job[] = [
+  {
+    // PLACEHOLDER: replace with your exact job title if it differs.
+    role: "TikTok Creator Support",
+    org: "Concentrix · ByteDance (TikTok) account",
+    start: "Jan 2026",
+    end: "Present",
+    points: [
+      "Help TikTok Shop creators resolve their questions and in-app problems.",
+      "Built Creator Support Navigator, a side project based on the questions creators ask most: an interactive map of the creator app with an assistant that answers from Academy articles.",
+    ],
+  },
   {
     role: "Full-Stack Developer (independent projects)",
     org: "Self-directed",
@@ -17,10 +29,7 @@ export const experience: Job[] = [
     org: "GSI / CBTL / EDI",
     start: "Oct 2023",
     end: "Aug 2024",
-    points: [
-      "Diagnosed and resolved complex system issues using structured problem-solving.",
-      "Maintained high-reliability systems under operational pressure.",
-    ],
+    points: ["Diagnosed and resolved equipment and building-system issues under time pressure."],
   },
   {
     role: "Property Manager",
@@ -28,8 +37,8 @@ export const experience: Job[] = [
     start: "Aug 2018",
     end: "Mar 2023",
     points: [
-      "Managed operations, reporting and system workflows.",
-      "Improved efficiency through structured tracking and process optimization.",
+      "Supported the team in using the company's property management software.",
+      "Handled day-to-day property operations and reports.",
     ],
   },
   {
@@ -37,22 +46,16 @@ export const experience: Job[] = [
     org: "The Medical City",
     start: "Aug 2016",
     end: "Sep 2017",
-    points: ["Managed maintenance workflows using digital systems (CMMS)."],
-  },
-  {
-    // PLACEHOLDER: add your job title at Eastkem.
-    role: "",
-    org: "Eastkem Industrial Inc.",
-    start: "Jan 2016",
-    end: "Aug 2016",
-    points: [],
+    points: [
+      "Assisted the engineering team and monitored building systems and maintenance tasks in a CMMS (maintenance software).",
+    ],
   },
 ];
 
 export const education: Education[] = [
   {
-    program: "Java Programming and Software Development",
-    school: "CIICC",
+    program: "Programming (Java) NC III",
+    school: "CIICC · TESDA",
     start: "2026",
     end: "Present",
   },

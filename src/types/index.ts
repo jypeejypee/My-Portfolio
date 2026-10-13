@@ -53,6 +53,8 @@ export type Project = {
   status?: "In progress";
   images: Screenshot[];
   liveUrl?: string;
+  /** Screen-recorded walkthrough, for projects without public access. */
+  video?: { src: string; poster: string; caption: string };
   /** Hide the live URL text (the link still works), e.g. when the domain names a client. */
   hideUrl?: boolean;
   /** Short note shown next to the live link, e.g. how to get in. */

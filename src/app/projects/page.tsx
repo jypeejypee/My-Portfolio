@@ -16,8 +16,8 @@ export default function ProjectsPage() {
         <span className="eyebrow">Selected work</span>
         <h1 className="page-title">Projects</h1>
         <p className="page-intro">
-          Complete, deployed apps you can open and use right now, plus smaller builds where I
-          practiced real-time servers, third-party APIs and Java back ends.
+          Complete, deployed apps with live demos or a video walkthrough, plus smaller builds where
+          I practiced real-time servers, third-party APIs and Java back ends.
         </p>
       </header>
 

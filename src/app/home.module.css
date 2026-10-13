@@ -275,3 +275,28 @@
     min-height: 200px;
   }
 }
+
+.now {
+  margin-left: var(--space-2);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--color-success-soft);
+  color: var(--color-success);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.liveTag {
+  margin-left: auto;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-text);
+  font-size: var(--text-2xs);
+}
+
+.liveLink > svg:first-child {
+  margin-left: 0;
+  color: var(--color-accent);
+}
