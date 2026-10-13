@@ -7,10 +7,10 @@ export const profile: Profile = {
   role: "Full-Stack Developer",
   headline: "I turn everyday problems into working software.",
   subhead:
-    "Full-stack developer building with React, Next.js and Supabase: an accounting system, an AI-assisted support tool and a game that teaches Java.",
-  bio: "Full-stack developer building practical web apps with React, Next.js and Supabase. Currently in TikTok creator support at Concentrix.",
+    "Full-stack developer working with React, Next.js, Supabase and Java. Recent builds: an accounting system, an AI-assisted support tool and a Java-teaching game.",
+  bio: "Full-stack developer building practical web apps with React, Next.js, Supabase and Java. Currently in TikTok creator support at Concentrix.",
   summary:
-    "Full-stack developer who builds and deploys web applications with JavaScript, TypeScript, React, Next.js, Node.js and Supabase (PostgreSQL), including AI features with the Claude API. Currently in TikTok creator support at Concentrix, where the questions creators ask every day inspired a support tool I built. Background in engineering and operations: troubleshooting systems, working under time pressure and learning new software quickly. Seeking a software engineer or full-stack developer role.",
+    "Full-stack developer who builds and deploys web applications with JavaScript, TypeScript, React, Next.js, Node.js and Supabase (PostgreSQL), plus Java with JDBC (TESDA Programming (Java) NC III in progress), including AI features with the Claude API. Currently in TikTok creator support at Concentrix, where the questions creators ask every day inspired a support tool I built. Background in engineering and operations: troubleshooting systems, working under time pressure and learning new software quickly. Seeking a software engineer or full-stack developer role.",
   story: [
     "I build web apps that solve problems I run into, and I ship them: an accounting system with a live dashboard and Excel reports, a support tool with an AI assistant, and a browser RPG that teaches Java.",
     "Right now I support TikTok creators at Concentrix. The questions creators ask every day inspired Creator Support Navigator, which maps the creator app screen by screen and answers from the team's own help articles.",
