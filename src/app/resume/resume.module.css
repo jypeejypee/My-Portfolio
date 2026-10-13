@@ -12,6 +12,8 @@
 }
 
 .paper {
+  /* Standard font + normal spacing so ATS text extraction keeps every space. */
+  font-family: Arial, Helvetica, sans-serif;
   max-width: 820px;
   padding: var(--space-12);
   border: 1px solid var(--color-border);
@@ -23,7 +25,7 @@
 }
 
 .paper a {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .head {
@@ -59,7 +61,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .section ul {
@@ -194,4 +196,10 @@
   .entry {
     break-inside: avoid;
   }
+}
+
+.paper h1,
+.paper h2,
+.paper h3 {
+  letter-spacing: normal;
 }

@@ -3,7 +3,7 @@
   z-index: 1;
   margin-left: var(--rail-width);
   min-height: 100dvh;
-  padding: var(--space-12) var(--space-10);
+  padding: var(--space-12) var(--space-12) var(--space-16);
 }
 
 .inner {
@@ -15,7 +15,7 @@
   .main {
     margin-left: 0;
     padding: var(--space-6) var(--space-4);
-    padding-bottom: calc(var(--tabbar-height) + var(--space-10));
+    padding-bottom: calc(var(--tabbar-height) + var(--space-16));
   }
 }
 
@@ -28,6 +28,9 @@
 
   .inner {
     max-width: none;
+  }
+
+  .inner > * {
     animation: none;
   }
 }

@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import styles from "./layout.module.css";
 import { profile } from "@/data/profile";
@@ -9,8 +9,7 @@ import ProfileRail from "@/components/ProfileRail";
 import MobileHeader from "@/components/MobileHeader";
 import MobileTabBar from "@/components/MobileTabBar";
 
-const sans = Geist({ subsets: ["latin"], variable: "--font-main" });
-const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-code" });
+const sans = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-main" });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 const title = `${profile.name} — ${profile.role}`;
@@ -21,8 +20,21 @@ export const metadata: Metadata = {
   description: profile.summary,
   authors: [{ name: profile.name }],
   keywords: [profile.role, ...skills.flatMap((g) => g.items)],
-  openGraph: { type: "profile", title, description: profile.headline, siteName: profile.name },
-  twitter: { card: "summary", title, description: profile.headline },
+  openGraph: {
+    type: "profile",
+    title,
+    description: profile.subhead,
+    siteName: profile.name,
+    images: ["/projects/accounting.jpg"],
+  },
+  twitter: { card: "summary_large_image", title, description: profile.subhead },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f1ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0f1e" },
+  ],
 };
 
 // Structured data so search engines and recruiting tools can read who you are.
@@ -32,15 +44,22 @@ const personJsonLd = {
   name: profile.name,
   jobTitle: profile.role,
   email: `mailto:${profile.email}`,
-  address: { "@type": "PostalAddress", addressCountry: profile.location },
+  address: { "@type": "PostalAddress", addressRegion: "Rizal", addressCountry: "PH" },
+  alumniOf: "Polytechnic University of the Philippines",
   sameAs: profile.socials.map((s) => s.href),
   knowsAbout: skills.flatMap((g) => g.items),
   ...(siteUrl && { url: siteUrl }),
 };
 
+// Runs before paint so the saved theme never flashes.
+const themeScript = `try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={sans.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <a href="#content" className="skip-link">
           Skip to content

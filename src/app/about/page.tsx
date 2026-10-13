@@ -1,47 +1,126 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { profile } from "@/data/profile";
 import { skills, learningNow } from "@/data/skills";
-import { education } from "@/data/experience";
+import { certifications, education, experience } from "@/data/experience";
+import StatsStrip from "@/components/StatsStrip";
 import Icon from "@/components/Icon";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${profile.name}, ${profile.role}: skills, education and what I'm looking for.`,
+  description: `About ${profile.name}: mechanical engineer turned full-stack developer. Experience, education, certifications and skills.`,
 };
 
 export default function AboutPage() {
   return (
     <>
-      <header className="page-head">
-        <span className="eyebrow">About</span>
-        <h1 className="page-title">Hi, I&apos;m {profile.firstName}.</h1>
-        <p className="page-intro">{profile.summary}</p>
-      </header>
-
-      <div className={styles.facts}>
-        <div className={styles.fact}>
-          <span className="eyebrow">Role</span>
-          <p>{profile.role}</p>
+      <section className={`card ${styles.intro}`}>
+        <div className={styles.photoWrap}>
+          <Image
+            src={profile.avatarSrc}
+            alt={profile.name}
+            width={390}
+            height={309}
+            sizes="(max-width: 900px) 60vw, 300px"
+            className={styles.photo}
+            priority
+          />
         </div>
-        <div className={styles.fact}>
-          <span className="eyebrow">Location</span>
-          <p>
-            {profile.location} · {profile.timezone}
+        <div className={styles.story}>
+          <span className="eyebrow">About me</span>
+          <h1 className={styles.title}>
+            Hi, I&apos;m {profile.firstName}. I fix problems, now with code.
+          </h1>
+          {profile.story.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+          <p className={styles.looking}>
+            <Icon name="sparkle" size={18} weight="fill" /> {profile.lookingFor}
           </p>
         </div>
-        <div className={styles.fact}>
-          <span className="eyebrow">Looking for</span>
-          <p>{profile.lookingFor}</p>
-        </div>
+      </section>
+
+      <div className={styles.stats}>
+        <StatsStrip />
+      </div>
+
+      <section className={styles.section} aria-labelledby="experience-title" id="experience">
+        <h2 id="experience-title" className="section-title">
+          Experience
+        </h2>
+        <ol className={styles.timeline}>
+          {experience.map((job) => (
+            <li key={`${job.org}-${job.start}`} className={styles.item}>
+              <span className={styles.date}>
+                {job.start} – {job.end}
+              </span>
+              <div className={`card ${styles.jobCard}`}>
+                <h3>{job.role || job.org}</h3>
+                {job.role && <p className={styles.org}>{job.org}</p>}
+                {job.points.length > 0 && (
+                  <ul>
+                    {job.points.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <div className={styles.twoCol}>
+        <section className={styles.section} aria-labelledby="education">
+          <h2 id="education" className="section-title">
+            Education
+          </h2>
+          <ul className={styles.list}>
+            {education.map((e) => (
+              <li key={e.school} className={`card ${styles.listItem}`}>
+                <span className="icon-tile">
+                  <Icon name="graduation" size={20} weight="fill" />
+                </span>
+                <div>
+                  <h3>{e.program}</h3>
+                  <p className="muted">
+                    {e.school} · {e.start}–{e.end}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className={styles.section} aria-labelledby="certs">
+          <h2 id="certs" className="section-title">
+            Certifications
+          </h2>
+          <ul className={styles.list}>
+            {certifications.map((c) => (
+              <li key={c.name} className={`card ${styles.listItem}`}>
+                <span className="icon-tile">
+                  <Icon name="certificate" size={20} weight="fill" />
+                </span>
+                <div>
+                  <h3>{c.name}</h3>
+                  <p className="muted">{c.issuer}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
 
       <section className={styles.section} aria-labelledby="skills">
-        <h2 id="skills">Skills</h2>
+        <h2 id="skills" className="section-title">
+          Skills
+        </h2>
         <div className={styles.skills}>
           {skills.map((g) => (
-            <div key={g.area} className={styles.group}>
+            <div key={g.area} className={`card ${styles.group}`}>
               <h3>{g.area}</h3>
               <ul className="chips">
                 {g.items.map((s) => (
@@ -54,38 +133,18 @@ export default function AboutPage() {
           ))}
         </div>
         <p className={styles.learning}>
-          <Icon name="sparkle" size={16} /> <span>{learningNow}</span>
+          <Icon name="sparkle" size={16} weight="fill" /> <span>{learningNow}</span>
         </p>
       </section>
 
-      <section className={styles.section} aria-labelledby="education">
-        <h2 id="education">Education</h2>
-        <ol className={styles.timeline}>
-          {education.map((e) => (
-            <li key={`${e.school}-${e.program}`} className={styles.item}>
-              <span className="eyebrow">
-                {e.start} – {e.end}
-              </span>
-              <h3>{e.program}</h3>
-              <p className="muted">{e.school}</p>
-              {e.points.length > 0 && (
-                <ul>
-                  {e.points.map((p) => (
-                    <li key={p}>{p}</li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className={`${styles.section} ${styles.cta}`}>
-        <h2>Want the short version?</h2>
-        <p className="muted">My resume has everything on one page.</p>
+      <section className={`card ${styles.cta}`}>
+        <h2>Let&apos;s build something useful.</h2>
+        <p className="muted">
+          My resume has everything in one place, in a format hiring tools can read.
+        </p>
         <div className="btn-row">
           <Link href={profile.resumeHref} className="btn btn-primary">
-            <Icon name="file" /> View resume
+            <Icon name="file" weight="bold" /> View resume
           </Link>
           <Link href="/contact" className="btn">
             Contact me

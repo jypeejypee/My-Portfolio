@@ -1,29 +1,42 @@
 import type { Metadata } from "next";
-import { projects } from "@/data/projects";
-import ProjectCard from "@/components/ProjectCard";
+import { flagshipProjects, otherProjects } from "@/data/projects";
+import ProjectCard, { FlagshipCard } from "@/components/ProjectCard";
 import styles from "./projects.module.css";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Web apps, tools and a game built with React, Next.js, Node.js and Java.",
+  description:
+    "Live full-stack projects: an accounting web app, an AI-assisted support tool and an educational game.",
 };
 
 export default function ProjectsPage() {
   return (
     <>
       <header className="page-head">
-        <span className="eyebrow">Work</span>
+        <span className="eyebrow">Selected work</span>
         <h1 className="page-title">Projects</h1>
         <p className="page-intro">
-          Complete, working projects across the stack: a game, real-time and file-sharing web apps,
-          automation tools and a Java back end. Every one has its source code on GitHub.
+          Complete, deployed apps you can open and use right now, plus smaller builds where I
+          practiced real-time servers, third-party APIs and Java back ends.
         </p>
       </header>
-      <div className={styles.grid}>
-        {projects.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
+
+      <div className={styles.flagships}>
+        {flagshipProjects.map((p, i) => (
+          <FlagshipCard key={p.slug} project={p} index={i} priority={i === 0} />
         ))}
       </div>
+
+      <section className={styles.more} aria-labelledby="more-title">
+        <h2 id="more-title" className="section-title">
+          More builds
+        </h2>
+        <div className={styles.grid}>
+          {otherProjects.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
+        </div>
+      </section>
     </>
   );
 }

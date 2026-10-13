@@ -1,7 +1,17 @@
+.flagships {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.more {
+  margin-top: var(--space-16);
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
 }
 
 /* Project detail page */
@@ -11,6 +21,7 @@
   gap: var(--space-2);
   color: var(--color-muted);
   font-size: var(--text-sm);
+  font-weight: 600;
   transition: color var(--dur-fast);
 }
 
@@ -18,11 +29,31 @@
   color: var(--color-text);
 }
 
+.heroActions {
+  margin-top: var(--space-6);
+}
+
+.note {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
 .detail {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
+  grid-template-columns: minmax(0, 1fr) 300px;
   gap: var(--space-10);
-  margin-top: var(--space-10);
+  margin-top: var(--space-12);
 }
 
 .prose {
@@ -47,19 +78,15 @@
 }
 
 .highlights li {
-  position: relative;
-  padding-left: var(--space-6);
+  display: flex;
+  gap: var(--space-3);
   color: var(--color-muted);
 }
 
-.highlights li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.6em;
-  width: 10px;
-  height: 2px;
-  background: var(--color-accent);
+.highlights svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--color-accent);
 }
 
 .facts {
@@ -68,9 +95,6 @@
   gap: var(--space-5);
   align-self: start;
   padding: var(--space-6);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
 }
 
 .facts dl {
@@ -81,11 +105,12 @@
 }
 
 .facts dt {
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
 }
 
 .facts dd {
   margin: 0;
+  font-weight: 600;
 }
 
 .factButtons {
@@ -99,23 +124,25 @@
   justify-content: space-between;
   align-items: center;
   margin-top: var(--space-12);
-  padding: var(--space-5) var(--space-6);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  transition: border-color var(--dur-fast);
+  padding: var(--space-6);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base);
 }
 
 .nextLink:hover {
-  border-color: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
 }
 
 .nextLink strong {
   display: block;
-  font-size: var(--text-lg);
-  font-weight: 600;
+  margin-top: var(--space-1);
+  font-size: var(--text-xl);
+  font-weight: 800;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .detail {
     grid-template-columns: 1fr;
   }

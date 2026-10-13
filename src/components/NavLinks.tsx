@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navItems } from "@/lib/nav";
+import { navItems, isActive } from "@/lib/nav";
 import Icon from "./Icon";
 
-// Shared by ProfileRail (variant="rail") and MobileTabBar (variant="tabs").
+// Sidebar navigation on desktop.
 export default function NavLinks({
   className,
   activeClass,
@@ -17,7 +17,7 @@ export default function NavLinks({
   return (
     <>
       {navItems.map((item) => {
-        const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+        const active = isActive(item.href, pathname);
         return (
           <Link
             key={item.href}
@@ -25,7 +25,7 @@ export default function NavLinks({
             className={`${className} ${active ? activeClass : ""}`}
             aria-current={active ? "page" : undefined}
           >
-            <Icon name={item.icon} size={20} />
+            <Icon name={item.icon} size={20} weight={active ? "fill" : "regular"} />
             <span>{item.label}</span>
           </Link>
         );

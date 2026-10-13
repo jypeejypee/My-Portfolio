@@ -7,4 +7,8 @@ export const navItems = [
   { href: "/contact", label: "Contact", icon: "envelope" },
 ] as const;
 
-export type NavIcon = (typeof navItems)[number]["icon"];
+export type NavItem = (typeof navItems)[number];
+export type NavIcon = NavItem["icon"];
+
+export const isActive = (href: string, pathname: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { profile } from "@/data/profile";
-import { projects } from "@/data/projects";
+import { flagshipProjects, otherProjects } from "@/data/projects";
 import { skills } from "@/data/skills";
-import { education } from "@/data/experience";
+import { certifications, education, experience } from "@/data/experience";
 import PrintButton from "@/components/PrintButton";
 import styles from "./resume.module.css";
 
@@ -16,6 +16,9 @@ const stripProtocol = (url: string) => url.replace(/^https?:\/\//, "").replace(/
 // Deliberately plain, single-column layout with standard section names so
 // applicant tracking systems (ATS) can parse it, on screen and as a PDF.
 export default function ResumePage() {
+  // The independent-projects entry is covered by the Projects section on the resume.
+  const jobs = experience.filter((j) => j.org !== "Self-directed");
+
   return (
     <>
       <div className={styles.toolbar}>
@@ -61,25 +64,62 @@ export default function ResumePage() {
 
         <section className={styles.section}>
           <h2>Projects</h2>
-          {projects.map((p) => (
+          {flagshipProjects.map((p) => (
             <div key={p.slug} className={styles.entry}>
               <h3>
                 {p.title}
-                {p.status && <span className={styles.status}> ({p.status})</span>}
                 <span className={styles.tech}> | {p.tech.join(", ")}</span>
               </h3>
               {(p.liveUrl || p.repoUrl) && (
                 <p className={styles.links}>
-                  {p.liveUrl && <a href={p.liveUrl}>{stripProtocol(p.liveUrl)}</a>}
-                  {p.repoUrl && <a href={p.repoUrl}>{stripProtocol(p.repoUrl)}</a>}
+                  {p.liveUrl && (
+                    <a href={p.liveUrl}>
+                      {p.hideUrl
+                        ? "Live demo (online, with a demo account)"
+                        : `Live: ${stripProtocol(p.liveUrl)}`}
+                    </a>
+                  )}
+                  {p.repoUrl && <a href={p.repoUrl}>Code: {stripProtocol(p.repoUrl)}</a>}
                 </p>
               )}
               <ul>
                 <li>{p.summary}</li>
-                {p.highlights.slice(0, 1).map((h) => (
+                {p.highlights.slice(0, 2).map((h) => (
                   <li key={h}>{h}</li>
                 ))}
               </ul>
+            </div>
+          ))}
+          <div className={styles.entry}>
+            <h3>Other projects</h3>
+            <ul>
+              {otherProjects.map((p) => (
+                <li key={p.slug}>
+                  <strong>{p.title}</strong>
+                  {p.status && ` (${p.status})`} ({p.tech.join(", ")}): {p.summary}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Work Experience</h2>
+          {jobs.map((j) => (
+            <div key={`${j.org}-${j.start}`} className={styles.entry}>
+              <h3>
+                {j.role ? `${j.role}, ${j.org}` : j.org}
+                <span className={styles.date}>
+                  {j.start} – {j.end}
+                </span>
+              </h3>
+              {j.points.length > 0 && (
+                <ul>
+                  {j.points.map((pt) => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </section>
@@ -87,22 +127,26 @@ export default function ResumePage() {
         <section className={styles.section}>
           <h2>Education</h2>
           {education.map((e) => (
-            <div key={`${e.school}-${e.program}`} className={styles.entry}>
+            <div key={e.school} className={styles.entry}>
               <h3>
                 {e.program}, {e.school}
                 <span className={styles.date}>
                   {e.start} – {e.end}
                 </span>
               </h3>
-              {e.points.length > 0 && (
-                <ul>
-                  {e.points.map((pt) => (
-                    <li key={pt}>{pt}</li>
-                  ))}
-                </ul>
-              )}
             </div>
           ))}
+        </section>
+
+        <section className={styles.section}>
+          <h2>Certifications</h2>
+          <ul>
+            {certifications.map((c) => (
+              <li key={c.name}>
+                {c.name}, {c.issuer}
+              </li>
+            ))}
+          </ul>
         </section>
       </article>
     </>

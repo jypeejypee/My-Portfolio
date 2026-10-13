@@ -1,37 +1,42 @@
-import type { Project } from "@/types";
-import Icon, { type IconName } from "./Icon";
+import Image from "next/image";
+import type { Screenshot } from "@/types";
 import styles from "./ProjectCover.module.css";
 
-const categoryIcon: Record<Project["category"], IconName> = {
-  Game: "game",
-  "Web app": "browser",
-  Tool: "terminal",
-  Website: "layout",
-  Backend: "database",
-};
-
-// Shows the screenshot if there is one, otherwise a clean generated cover.
+// A screenshot shown inside a small browser window frame.
 export default function ProjectCover({
-  project,
-  large = false,
+  image,
+  url,
+  sizes = "(max-width: 1100px) 100vw, 640px",
+  priority = false,
+  className = "",
 }: {
-  project: Project;
-  large?: boolean;
+  image: Screenshot;
+  url?: string;
+  sizes?: string;
+  priority?: boolean;
+  className?: string;
 }) {
-  if (project.image) {
-    return (
-      <div className={`${styles.cover} ${large ? styles.large : ""}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={project.image} alt={`${project.title} screenshot`} className={styles.img} />
-      </div>
-    );
-  }
-
   return (
-    <div className={`${styles.cover} ${large ? styles.large : ""}`} aria-hidden="true">
-      <span className={styles.icon}>
-        <Icon name={categoryIcon[project.category]} size={large ? 32 : 26} />
-      </span>
-    </div>
+    <figure className={`${styles.frame} ${className}`}>
+      <div className={styles.bar} aria-hidden="true">
+        <span className={styles.dots}>
+          <i />
+          <i />
+          <i />
+        </span>
+        {url && (
+          <span className={styles.url}>{url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
+        )}
+      </div>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        sizes={sizes}
+        priority={priority}
+        className={styles.img}
+      />
+    </figure>
   );
 }

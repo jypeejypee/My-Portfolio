@@ -4,21 +4,31 @@ export const profile: Profile = {
   name: "Jaypee C. Vilador",
   firstName: "Jaypee",
   handle: "@jypeejypee",
-  role: "Junior Full-Stack Developer",
-  headline:
-    "I build complete, working web apps, from React front ends to Node.js and Java back ends.",
-  bio: "Full-stack developer in the Philippines building with React, Next.js, Node.js and Java.",
+  role: "Full-Stack Developer",
+  headline: "Mechanical engineer turned full‑stack developer.",
+  subhead:
+    "I build complete, working web apps, from an accounting system to an AI support assistant, with React, Next.js, Supabase and Node.js.",
+  bio: "Full-stack developer with 7+ years of engineering experience. I build and ship web apps with React, Next.js and Supabase.",
   summary:
-    "Junior full-stack developer who builds complete, working projects: a React game that teaches Java, real-time chat with WebSockets, and tools that automate Google Drive. Comfortable on the front end (React, Next.js, responsive HTML/CSS) and the back end (Node.js, Express, Java, PostgreSQL). Currently deepening my Java and database skills.",
-  location: "Philippines",
+    "Full-stack developer with hands-on experience building and deploying web applications with JavaScript, TypeScript, React and Next.js, backed by Supabase (PostgreSQL) and Node.js. Brings 7+ years of engineering experience in structured problem-solving and system operations, with a strong focus on clean, maintainable code and real-world solutions.",
+  story: [
+    "I studied Mechanical Engineering at the Polytechnic University of the Philippines and spent 7+ years keeping plants, buildings and hospital systems running as a shift engineer, property manager and plant engineer.",
+    "That work was all about diagnosing problems under pressure and building reliable processes. Software turned out to be the same job with better tools, so I made the switch.",
+    "Since then I've built and deployed full-stack apps: an accounting system with a live dashboard and Excel reports, an AI-assisted support tool, and a browser RPG that teaches Java. I'm now deepening my Java and database skills at CIICC.",
+  ],
+  location: "Rizal, Philippines",
   timezone: "GMT+8",
   email: "Jaypee.Vilador@gmail.com",
-  // PLACEHOLDER: put a real photo at public/avatar.jpg and change this path.
-  avatarSrc: "/avatar.svg",
+  avatarSrc: "/avatar.jpg",
   resumeHref: "/resume",
   available: true,
   availabilityText: "Open to work",
-  lookingFor: "Open to junior full-stack, front-end and Java developer roles.",
+  lookingFor: "Open to full-stack, front-end and React / Next.js developer roles.",
+  stats: [
+    { value: "7+ yrs", label: "Engineering experience", icon: "briefcase" },
+    { value: "3", label: "Live apps shipped", icon: "rocket" },
+    { value: "GMT+8", label: "Philippines time", icon: "clock" },
+  ],
   socials: [
     { label: "GitHub", href: "https://github.com/jypeejypee", icon: "github" },
     // PLACEHOLDER: add your LinkedIn, e.g.
