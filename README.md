@@ -2,6 +2,11 @@
 
 My personal portfolio website, built with **Next.js 16, React 19 and TypeScript**.
 
+**Live:** https://jaypeevilador.vercel.app
+
+![Portfolio home page](portfolio-screenshot.jpg)
+
+
 ## Tech stack
 
 - Next.js (App Router) + React Server Components
